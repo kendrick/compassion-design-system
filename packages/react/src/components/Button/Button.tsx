@@ -7,7 +7,6 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   mode?: 'primary' | 'secondary' | 'tertiary';
   size?: 'small' | 'medium' | 'large';
   disabled?: boolean;
-  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
@@ -18,14 +17,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     disabled = false,
     className,
     style,
-    onClick,
     ...rest
   } = props;
   const classNames = getClasses(styles, ['button-main', mode, size], className);
 
   return (
     <button
-      onClick={onClick}
       className={classNames}
       disabled={disabled}
       style={style}
